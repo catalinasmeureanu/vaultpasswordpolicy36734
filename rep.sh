@@ -30,7 +30,9 @@ EOF
 
 vault write education/sys/policies/password/ad_policy  policy=@policy.hcl
 
-vault write -namespace=education ad/config binddn=vagrant bindpass=vagrant url=ldaps://WindowsDC.marti.local userdn='dc=marti,dc=local' password_policy=ad_po$
+vault write -namespace=education ad/config \
+ binddn=vagrant bindpass=vagrant url=ldaps://WindowsDC.marti.local userdn='dc=marti,dc=local'\
+ password_policy=ad_policy length=0
 
 vault write -namespace=education ad/library/accounting-team service_account_names=catalina@marti.local
 
